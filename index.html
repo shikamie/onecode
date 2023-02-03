@@ -14,40 +14,54 @@
 </head>
 <body>
 	<div class="container">
-		<h1 class="color-animation">To-Do List</h1>
-  <form>
-    <input type="text" id="task" placeholder="Enter a task">
-    <button class="buttonTask" type="button" onclick="addTask()">Add Task</button>
-  </form>
-  <ul id="list"></ul>
-  <script>
-    function addTask() {
-      var task = document.getElementById("task").value; // Принимаем инпут от пользователя
-		if (task.trim() === "") {
-        alert("Пожалуйста, введите задачу, прежде чем добавлять ее в список.");
-        return;
-      }
-      var list = document.getElementById("list"); // Находим лист по айди, для последующего использования в коде
-      var newItem = document.createElement("li"); // создаем новый элемент html li	
-      newItem.innerHTML = task + " "; // пихаем в список содержание инпута
+    <div class="header">
+      <div class="header-block">
+        <div class="header-logo">K</div>
+        <div class="header-menu">
+          <ul class="header-menu-list">
+            <li class="header-menu-item">Home</li>
+            <li class="header-menu-item">About</li>
+            <li class="header-menu-item">Project</li>
+            <li class="header-menu-item">Me</li>
+          </ul>
+        </div>
+        <div class="header-profile"></div>
+      </div>
+    </div>
+		<section class="section ">
+      <h1 class="">To-Do List</h1>
+        <form>
+          <input type="text" id="task"  placeholder="Enter a task">
+          <button class="buttonTask" type="button" onclick="addTask()">Add Task</button>
+        </form>
+        <ul id="list"></ul>
+        <script>
+          function addTask() {
+            var task = document.getElementById("task").value; // Принимаем инпут от пользователя
+      if (task.trim() === "") {
+              alert("Пожалуйста, введите задачу, прежде чем добавлять ее в список.");
+              return;
+            }
+            var list = document.getElementById("list"); // Находим лист по айди, для последующего использования в коде
+            var newItem = document.createElement("li"); // создаем новый элемент html li	
+            newItem.innerHTML = task + " "; // пихаем в список содержание инпута
+      var deleteBtn = document.createElement("button"); // Создаём кнопку удаления элемента из списка
+            deleteBtn.innerHTML = "Delete"; // Вставляем текст в кнопку
+            deleteBtn.onclick = function() {
+              list.removeChild(newItem); // Создали функцию, которая удаляет текущую задачу в туду
+            }
+            newItem.appendChild(deleteBtn); // кидаем в жлемент списка кнопку
+            list.appendChild(newItem); //
+          }
+        </script>
+    </section>
 
-
-		var deleteBtn = document.createElement("button"); // Создаём кнопку удаления элемента из списка
-      deleteBtn.innerHTML = "Delete"; // Вставляем текст в кнопку
-      deleteBtn.onclick = function() {
-        list.removeChild(newItem); // Создали функцию, которая удаляет текущую задачу в туду
-      }
-      newItem.appendChild(deleteBtn); // кидаем в жлемент списка кнопку
-      list.appendChild(newItem); //
-    }
-  </script>
-
-		<div class="hex-colors ">
-			<h1 class="color-animation">Нажмите на кнопку чтобы изменить шестнадцатеричный код случайного цвета #<span id="hex-code">000000</span></h2>
-			<button onclick="changeColor()" type="button" class="btn btn-primary">Жмакни</button>
-		</div>
-
-
+		<div class="section_block-hex section">
+      <div class="hex-colors ">
+        <h1 class="color-animation">Нажмите на кнопку чтобы изменить шестнадцатеричный код случайного цвета #<span id="hex-code">000000</span></h2>
+        <button onclick="changeColor()" type="button" class="btn btn-primary">Жмакни</button>
+      </div>
+    </div>
 
 	</div>
 
